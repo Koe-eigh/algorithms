@@ -1,4 +1,13 @@
 from typing import List
+import random
+
+def in_order(arr: List[int]) -> bool:
+    return all([arr[i] <= arr[i+1] for i in range(len(arr)-1)])
+
+def bongo_sort(arr: List[int]) -> List[int]:
+    while not in_order(arr):
+        random.shuffle(arr)
+    return arr
 
 def bubble_sort(arr: List[int]) -> List[int]:
     while 1 == 1:
