@@ -50,6 +50,25 @@ def cocktail_sort(arr: List[int]) -> List[int]:
 
 
 
+def comb_sort(arr: List[int]) -> List[int]:
+    COMB_SORT_COSTANT = 1.3
+    len_arr = len(arr)
+    gap = len_arr
+    swapped = True
+
+    while gap != 1 or swapped:
+        gap = int(gap / COMB_SORT_COSTANT) if int(gap / COMB_SORT_COSTANT) >= 1 else 1
+
+        swapped = False
+
+        for i in range(0, len_arr - gap):
+            if arr[i] > arr[i + gap]:
+                arr[i], arr[i + gap] = arr[i + gap], arr[i]
+                swapped = True
+    return arr
+
+
+
 def selection_sort(arr: List[int]) -> List[int]:
     for i in range(len(arr)):
         min = arr[i]
