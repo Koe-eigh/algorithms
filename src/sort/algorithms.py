@@ -71,13 +71,11 @@ def comb_sort(arr: List[int]) -> List[int]:
 
 def selection_sort(arr: List[int]) -> List[int]:
     for i in range(len(arr)):
-        min = arr[i]
         min_idx = i
         for j in range(i, len(arr)):
-            if arr[j] < min:
-                min = arr[j]
+            if arr[j] < arr[min_idx]:
                 min_idx = j
-        arr[i], arr[min_idx] = min, arr[i]
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
 
