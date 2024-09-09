@@ -40,6 +40,7 @@ def test(algorithm):
         print(f'{list_name} {test_list} 実行時間: {end_time - start_time}秒')
 # test(algorithms.bongo_sort)
 test(algorithms.bubble_sort)
+test(algorithms.cocktail_sort)
 test(algorithms.selection_sort)
 test(algorithms.insertion_sort)
 test(algorithms.quick_sort)
