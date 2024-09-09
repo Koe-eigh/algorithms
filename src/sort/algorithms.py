@@ -80,6 +80,17 @@ def selection_sort(arr: List[int]) -> List[int]:
 
 
 
+def gnome_sort(arr: List[int]) -> List[int]:
+    len_arr = len(arr)
+    pointer = 0
+    while pointer != len_arr - 1:
+        if arr[pointer] > arr[pointer+1]:
+            arr[pointer], arr[pointer+1] = arr[pointer+1], arr[pointer]
+            pointer = pointer - 1 if pointer > 0 else pointer + 1
+        pointer = pointer + 1
+    return arr
+
+
 def insertion_sort(arr: List[int]) -> List[int]:
     for i in range(1, len(arr)):
         for j in range(i):
