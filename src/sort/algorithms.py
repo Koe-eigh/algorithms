@@ -1,4 +1,6 @@
-def bubble_sort(arr: list):
+from typing import List
+
+def bubble_sort(arr: List[int]) -> List[int]:
     while 1 == 1:
         swap_count = 0
         for i in range(1, len(arr)):
@@ -9,7 +11,7 @@ def bubble_sort(arr: list):
             break
     return arr
 
-def selection_sort(arr: list):
+def selection_sort(arr: List[int]) -> List[int]:
     for i in range(len(arr)):
         min = arr[i]
         min_idx = i
@@ -20,13 +22,13 @@ def selection_sort(arr: list):
         arr[i], arr[min_idx] = min, arr[i]
     return arr
 
-def insertion_sort(arr: list):
+def insertion_sort(arr: List[int]) -> List[int]:
     for i in range(1, len(arr)):
         for j in range(i):
             if arr[i] < arr[j]:
                 arr[i], arr[j] = arr[j], arr[i]
 
-def quick_sort(arr: list):
+def quick_sort(arr: List[int]) -> List[int]:
     if len(arr) <= 1:
         return arr
     pivot = arr[0]
