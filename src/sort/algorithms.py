@@ -91,11 +91,34 @@ def gnome_sort(arr: List[int]) -> List[int]:
     return arr
 
 
+
 def insertion_sort(arr: List[int]) -> List[int]:
     for i in range(1, len(arr)):
         for j in range(i):
             if arr[i] < arr[j]:
                 arr[i], arr[j] = arr[j], arr[i]
+
+
+
+def bucket_sort(arr: List[int]) -> List[int]:
+    len_arr = len(arr)
+    max = arr[0]
+    for i in range(len_arr):
+        max = arr[i] if arr[i] > max else max
+    size = int(max / len_arr) if int(max / len_arr) != 0 else 1
+    buckets = [[] for _ in range(size)]
+
+    for num in arr:
+        i = int(num / size)
+        if i != size and size != 1:
+            buckets[i].append(num)
+        else:
+            buckets[size-1].append(num)
+    
+    for i in range(size):
+        insertion_sort(buckets[i])
+        
+    return arr
 
 
 
