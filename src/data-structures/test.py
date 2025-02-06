@@ -1,0 +1,25 @@
+import linked_list
+import doubly_linked_list
+
+print('####### LinkedList')
+l = linked_list.LinkedList()
+l.append(1)
+l.append(2)
+l.insert(4, 1)
+l.print()
+print()
+print(l.get(0))
+print(l.length())
+print('##########')
+l.remove(4)
+l.print()
+print()
+print(l.length())
+
+print('###### DoublyLinkedList')
+l = doubly_linked_list.DoublyLinkedList()
+l.append(1)
+l.append(4)
+l.append(3)
+l.insert(7, 3)
+l.print()

@@ -1,6 +1,0 @@
-services:
-  app:
-    image: python:latest
-    volumes:
-      - ./src:/usr/src
-    tty: true

@@ -122,6 +122,22 @@ def bucket_sort(arr: List[int]) -> List[int]:
 
 
 
+def shell_sort(arr: List[int]) -> List[int]:
+    len_arr = len(arr)
+    gap = len_arr // 2
+    while gap > 0:
+        for i in range(gap, len_arr):
+            tmp = arr[i]
+            j = i
+            while j >= gap and arr[j-gap] > tmp:
+                arr[j] = arr[j-gap]
+                j -= gap
+            arr[j] = tmp
+        gap //= 2
+    return arr
+
+
+
 def quick_sort(arr: List[int]) -> List[int]:
     if len(arr) <= 1:
         return arr
