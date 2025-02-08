@@ -81,3 +81,11 @@ class DoublyLinkedList:
         while pointer is not None:
             print(pointer.data)
             pointer = pointer.next
+
+if __name__ == '__main__':
+    l = DoublyLinkedList()
+    l.append(1)
+    l.append(4)
+    l.append(3)
+    l.insert(7, 3)
+    l.print()
