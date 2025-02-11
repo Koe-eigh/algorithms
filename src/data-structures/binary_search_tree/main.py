@@ -27,6 +27,8 @@ class BinarySearchTree:
         _insert(self.root, value)
     
     def remove(self, value: int) -> None:
+        if self.search(value) is False:
+            return
         def _min_value(node: Node) -> Node:
             current = node
             while current.left:
@@ -34,23 +36,30 @@ class BinarySearchTree:
             return current
 
         def _remove(node: Node, value: int) -> Node:
+            """
+            @params node: 部分木のルートノード, value: 削除する値
+            @return 削除後の部分木のルートノード
+            """
             if node is None:
                 return node
             
             if value < node.value:
-                node.left = _remove(node.left, value)
+                node.left = _remove(node.left, value) # ノードの左部分木を探索
             elif value > node.value:
-                node.right = _remove(node.right, value)
-            else:
-                if node.left is None:
-                    return node.right
-                elif node.right is None:
-                    return node.left
+                node.right = _remove(node.right, value) # ノードの右部分木を探索
+            else: # 削除対象のノードが見つかった時
+                if node.left is None: # ノードに左部分木がない時
+                    return node.right # 右のノードを昇格
+                elif node.right is None: # ノードに右部分木がない時
+                    return node.left # 左のノードを昇格
                 
-                tmp = _min_value(node.right)
-                node.value = tmp.value
-                node.right = _remove(node.right, tmp.value)
+                # 削除対象のノードが左右両方に部分木を持つ時
+                tmp = _min_value(node.right) # 右部分木の最小ノードを探索
+                node.value = tmp.value # 削除対象ノードに右部分木の最小値を代入
+                node.right = _remove(node.right, tmp.value) # 右部分木の最小のノード削除
+
             return node
+
         _remove(self.root, value)
 
     
