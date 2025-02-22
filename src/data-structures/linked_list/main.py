@@ -5,6 +5,9 @@ class Node:
     def __init__(self, data: Any, next_node: Node=None) -> None:
         self.data = data
         self.next = next_node
+    
+    def __str__(self):
+        return str(self.data)
 
 class LinkedList:
     def __init__(self, head: Node=None) -> None:
@@ -18,7 +21,7 @@ class LinkedList:
         
         last_node = self.head
         while last_node.next:
-            last_node = self.head.next
+            last_node = last_node.next
         last_node.next = new_node
     
     def insert(self, data: Any, index: int=0) -> None:
@@ -50,7 +53,7 @@ class LinkedList:
         pointer: Node = self.head
         for _ in range(index):
             pointer = pointer.next
-        return pointer.data
+        return pointer
     
     def length(self) -> int:
         counter: int = 0
@@ -66,6 +69,19 @@ class LinkedList:
             print(pointer.data, end=', ')
             pointer = pointer.next
         print()
+    
+    def reverse(self) -> None:
+        if self.length() == 0 or self.length() == 1:
+            return
+        prev: Node = None
+        current: Node = self.head
+        while current:
+            next = current.next
+            current.next = prev
+
+            prev = current
+            current = next
+        self.head = prev
 
 if __name__ == '__main__':
     l = LinkedList()
@@ -73,8 +89,20 @@ if __name__ == '__main__':
     l.print()
     l.append(5)
     l.print()
+    l.append(7)
+    l.print()
+    l.append(3)
+    l.print()
+    l.append(9)
+    l.print()
+    l.append(10)
+    l.print()
+    l.append(2)
+    l.print()
     l.insert(8, index=1)
     l.print()
     l.remove(5)
+    l.print()
+    l.reverse()
     l.print()
     print(f"index=1 --> {l.get(1)}")
