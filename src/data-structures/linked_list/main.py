@@ -69,7 +69,7 @@ class LinkedList:
             print(pointer.data, end=', ')
             pointer = pointer.next
         print()
-    
+
     def reverse(self) -> None:
         if self.length() == 0 or self.length() == 1:
             return
@@ -83,6 +83,39 @@ class LinkedList:
             current = next
         self.head = prev
 
+    def reverse_even(self) -> None:
+        def _reverse(begin: Node, end: Node):
+            prev: Node = None
+            current: Node = begin
+            while current != end:
+                next: Node = current.next
+                current.next = prev
+                prev = current
+                current = next
+            return prev
+
+        prev: Node = None
+        current: Node = self.head
+        while current:
+            if current.data % 2 == 0:
+                even_start = current
+                while current and current.data % 2 == 0:
+                    current = current.next
+                even_end = current
+
+                reversed_head = _reverse(even_start, even_end)
+
+                if prev is not None:
+                    prev.next = reversed_head
+                else:
+                    self.head = reversed_head
+                even_start.next = even_end
+
+                prev = even_start
+            else:
+                prev = current
+                current = current.next
+
 if __name__ == '__main__':
     l = LinkedList()
     l.append(1)
@@ -91,9 +124,9 @@ if __name__ == '__main__':
     l.print()
     l.append(7)
     l.print()
-    l.append(3)
+    l.append(14)
     l.print()
-    l.append(9)
+    l.append(12)
     l.print()
     l.append(10)
     l.print()
@@ -104,5 +137,7 @@ if __name__ == '__main__':
     l.remove(5)
     l.print()
     l.reverse()
+    l.print()
+    l.reverse_even()
     l.print()
     print(f"index=1 --> {l.get(1)}")
